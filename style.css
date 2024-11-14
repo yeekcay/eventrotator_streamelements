@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css?family={slide_font}');
+
+html {
+  --black: #000;          /*Black*/
+  --white: #FFF;          /*White*/
+  --color1: {color1};     
+  --color2: {color2};
+  --color_title: {color_title};
+  --color_slash: {color_slash};
+}
+
+body {
+  margin: 0;
+  text-align: left;
+}
+
+main {
+  font-family: {slide_font}, Righteous;
+  text-transform: uppercase;
+  line-height: 1;
+  position: absolute;
+  width: 500px;
+  height: 4em;
+  overflow: hidden;
+}
+.color_slash{
+  color: var(--color_slash);
+}
+.color1 {
+  color: var(--color1);
+}
+.color2 {
+  color: var(--color2);
+}
+
+.white {
+  color: var(--white);
+}
+
+.light {
+  font-weight: 300;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.title {
+  color: var(--color_title) !important;
+}
+
+.txt-top {
+  color: var(--color1);
+}
+
+.txt-bot {
+  color: var(--color2);
+}
+
+.right .txt-top,
+.right .txt-bot {
+  text-align: right;
+}
+
+#slash {
+  width: 490px;
+  height: 4em;
+  position: absolute;
+}
+
+#slash div {
+  font-size: {size_slash}em;
+  opacity: 0;
+}
+
+
+.anim {
+  position: absolute;
+  display: none;
+  width: 500px;
+  height: 4em;
+}
+
+.anim div {
+  position: relative;
+}
+
+.mask {
+  overflow: hidden;
+  text-shadow: 2px 2px 3px #000000;
+  transform: skew(-20deg);
+}
+
+.play {
+  display: block;
+}
+
+
+.anim > div:nth-child(1), 
+.anim > div:nth-child(2) {
+  font-size: {size_title}em;
+  height: 1em;
+  width: 430px;
+}
+
+.anim > div:nth-child(1) {
+  top: 6px;
+  left: 35px;
+  
+}
+
+.anim > div:nth-child(2) {
+  top: 6px;
+  left: 25px;
+}
+
+
+
+
+
+/*********************
+* Animation
+*********************/
+@keyframes anim-slash-start-left {
+  0% {
+    opacity: 0;
+    transform: translate3d(465px, 0, 0);
+  }
+  25% {
+    opacity: 0;
+    transform: translate3d(465px, 0, 0);
+  }
+  45% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(0, 0, 0);
+  }
+  100%{
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes anim-slash-start-right {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  45% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(465px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(465px, 0, 0);
+  }  
+}
+
+@keyframes anim-slash-right {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(465px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(465px, 0, 0);
+  }
+}
+
+@keyframes anim-slash-left {
+  0% {
+    opacity: 1;
+    transform: translate3d(465px, 0, 0);
+  }
+  25% {
+    transform: translate3d(465px, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 0, 0);
+  }
+  100%{
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes anim-slash-end-right {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  45% {
+    opacity: 0;
+  }
+  50% {
+    transform: translate3d(465px, 0, 0);
+  }
+}
+
+@keyframes anim-slash-end-left {
+  0% {
+    opacity: 1;
+    transform: translate3d(465px, 0, 0);
+  }
+  25% {
+    opacity: 1;
+    transform: translate3d(465px, 0, 0);
+  }
+  45% {
+    opacity: 0;
+  }
+  50% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+
+#slash.play.left.start > div {
+  animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal forwards anim-slash-start-left;
+}
+#slash.play.right.start > div {
+  animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal forwards anim-slash-start-right;
+}
+
+#slash.play.right > div {
+  animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal forwards anim-slash-right;
+}
+#slash.play.left > div {
+  animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal forwards anim-slash-left;
+}
+
+#slash.play.left.end > div {
+  animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal forwards anim-slash-end-left;
+}
+#slash.play.right.end > div {
+  animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) 1 normal forwards anim-slash-end-right;
+}
+
+
+@keyframes anim-text-left-top {
+  0% {
+    left: -100%;
+  }
+  45% {
+    left: -100%;
+  }
+  65% {
+    left: 5px;
+  }
+  100% {
+    left: 5px;
+  }  
+}
+
+@keyframes anim-text-left-bottom {
+  0% {
+    left: -100%;
+  }
+  55% {
+    left: -100%;
+  }
+  75% {
+    left: 5px;
+  }
+  100% {
+    left: 5px;
+  }
+}
+
+@keyframes anim-text-right-top {
+  0% {
+    right: -100%;
+  }
+  45% {
+    right: -100%;
+  }
+  65% {
+    right: 5px;
+  }
+  100% {
+    right: 5px;
+  }
+}
+
+@keyframes anim-text-right-bottom {
+  0% {
+    right: -100%;
+  }
+  55% {
+    right: -100%;
+  }
+  75% {
+    right: 5px;
+  }
+  100% {
+    right: 5px;
+  }
+}
+
+
+.anim.play.left > div:nth-child(1) div, 
+.anim.play.left > div:nth-child(2) div {
+  animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) 2 alternate both;
+}
+
+.anim.play.left div:nth-child(1) div {
+  animation-name: anim-text-left-top;
+}
+
+.anim.play.left div:nth-child(2) div {
+  animation-name: anim-text-left-bottom;
+}
+
+
+
+
+.anim.play.right > div:nth-child(1) div, 
+.anim.play.right > div:nth-child(2) div {
+  animation: 5s cubic-bezier(0.19, 0.76, 0.32, 1) 2 alternate both;
+}
+
+.anim.play.right div:nth-child(1) div {
+  animation-name: anim-text-right-top;
+}
+
+.anim.play.right div:nth-child(2) div {
+  animation-name: anim-text-right-bottom;
+}
